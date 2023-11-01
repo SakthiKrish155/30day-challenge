@@ -1,3 +1,6 @@
+Given an array of elements , return the index of the target element. If element not found return -1
+
+CODE:
 int search(vector<int> &nums, int target)
 {
    int index = 0;
