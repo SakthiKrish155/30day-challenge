@@ -1,0 +1,44 @@
+Given an array of monsters denoting strengths of N monsters, we start with an empty battlefield, at each minute i, the ith
+monster joins the battlefield and kills all monsters whose strength is less than or equal to his strength.
+Find the number of monsters alive in the battlefield at end of ith minute for each 0<=i<=N.
+
+
+CODE:
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+
+    for (int i = 0; i < t; i++) 
+	{
+        int n;
+        cin >> n;
+        vector<int> v;
+        int alive = 0;
+
+        for (int j = 0; j < n; j++) 
+		{
+            int ele;
+            cin >> ele;
+			vector <int> strongmon;
+            for (int k = 0; k < v.size(); k++) {
+                if (v[k] <= ele) 
+                    alive--;
+				else
+                    strongmon.push_back(v[k]);
+            }
+
+            v = strongmon; 
+            v.push_back(ele); 
+            alive++;
+
+            cout << alive << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
