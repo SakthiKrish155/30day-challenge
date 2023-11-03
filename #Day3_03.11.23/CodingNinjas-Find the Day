@@ -1,0 +1,36 @@
+Write a function that calculates the corresponding day of the week for any particular date in the past or future.
+For example, for the date 28th August 2020 happens to be Friday. Hence the expected output will be Friday.
+
+
+CODE:
+import java.time.LocalDate;
+import java.time.DateTimeException;
+import java.time.DayOfWeek;
+public class Solution 
+{
+
+	public static boolean isLeapYear(int year) 
+	{
+		return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+	}
+    public static String dayOfTheWeek(int day, int month, int year) 
+	{
+		if(isLeapYear(year) || month != 2 || day <= 28)
+		{
+			try
+			{
+				LocalDate res_date = LocalDate.of(year,month,day);
+				DayOfWeek res_day = res_date.getDayOfWeek();
+				String dday = res_day.toString().toLowerCase();
+				dday = dday.substring(0,1).toUpperCase()+dday.substring(1);
+				return dday;
+			}
+			catch(DateTimeException e)
+			{
+				throw new IllegalArgumentException("Invalid Date");
+			}
+		}
+		else
+			throw new IllegalArgumentException("Invalid Date");
+	}
+}
