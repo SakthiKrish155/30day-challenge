@@ -1,0 +1,79 @@
+Write a program to solve a Sudoku puzzle by filling the empty cells.
+
+CODE:
+class Solution 
+{ 
+    public boolean emptycell(char[][] board,int[] point)
+    {
+        for(int row = 0 ; row < 9 ; row ++)
+        {
+            for(int col = 0 ; col < 9 ; col ++)
+            {
+                if(board[row][col] == '.')
+                {
+                    point[0] = row;
+                    point[1] = col;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public boolean checkRow(char[][] board,int row,int num)
+    {
+        for(int j = 0 ; j < 9 ; j ++)
+        {
+            if(board[row][j] == num)
+                return false;
+        }
+        return true;
+    }
+    public boolean checkCol(char[][] board, int col,int num)
+    {
+        for(int i = 0 ; i < 9 ; i ++)
+        {
+            if(board[i][col] == num)
+                return false;
+        }
+        return true;
+    }
+    public boolean checkGrid(char[][] board,int row, int col, int num)
+    {
+        for(int i = row ; i < row+3 ; i ++)
+        {
+            for(int j = col ; j < col+3 ; j ++)
+            {
+                if(board[i][j] == num)
+                    return false;
+            }
+        }
+        return true;
+    }
+    public boolean isSafe(char[][]board,int row,int col,int num)
+    {
+       if(checkRow(board,row,num) && checkCol(board,col,num) && checkGrid(board,(row-(row%3)),(col-(col%3)),num) && (board[row][col]== '.'))
+        return true;
+      return false; 
+    }
+
+    public boolean solveSudoku(char[][] board) 
+    {
+        int[] point = new int[2];
+        if(emptycell(board,point) == false)
+            return true;
+        int row = point[0];
+        int col = point[1];
+        for(int num = 1 ; num <= 9 ; num ++)
+        {
+            if(isSafe(board,row,col,(char)(num+'0')))
+            {
+                board[row][col] = (char)(num+'0'); 
+                if(solveSudoku(board))
+                    return true;
+                else
+                    board[row][col] = '.';
+            }
+        }        
+    return false;
+    }
+}
