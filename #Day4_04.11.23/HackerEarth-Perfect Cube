@@ -32,16 +32,6 @@ class Main
                 }
             }
         }
-        for(int L = 2 ; L <= n ; L ++)
-        {
-            for(int i = 0 ; i <= n-L ; i ++)
-            {
-                for(int j = i+L-1 ; j <= i+L-1 ; j ++)
-                {
-                    
-                }
-            }
-        }
         System.out.println(total);
     }
     public static void main(String args[] ) 
