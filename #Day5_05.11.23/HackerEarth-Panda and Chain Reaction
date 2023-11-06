@@ -1,0 +1,31 @@
+Panda has become a scientist recently. In his laboratory, there are infinite number of chambers where a chamber number K is connected to a chamber number K-1.
+The numbering of chambers start from 0. Initially, X number of particles are present in the chamber number 0. The number of particles present in chamber K is
+K times the number of particles present in chamber K-1. You are supposed to help Panda in finding out the number of particles in a given chamber number N.
+Note: The number of particles in chamber K cannot be calculated until the number of particles in chamber K-1 are calculated.
+
+
+CODE:
+import java.util.Scanner;
+class TestClass 
+{
+    public static void main(String args[])
+    {
+        int c = 1000003;
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        for(int i = 0 ; i < t ; i ++)
+        {
+            int n , x;
+            n = sc.nextInt();
+            x = sc.nextInt();
+            int arr[] = new int[n+1];
+            arr[0] = x;
+            for(int k = 1 ; k < n+1 ; k ++)
+            {
+               arr[k] = k * arr[k-1];
+            }
+            int result = arr[n]%c;
+            System.out.println(result);
+        }
+    }
+}
