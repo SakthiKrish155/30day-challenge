@@ -1,0 +1,17 @@
+You are given an array of N elements. Find the sum of the maximum and minimum in the array with minimum comparisons.
+
+
+CODE:
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+  public static int sumOfMaxMin(int[] arr, int n) 
+  {
+    int max,min;
+    Arrays.sort(arr);
+    max = arr[n-1];
+    min = arr[0];  
+    int res = max+min;
+    return res;
+  }
+}
