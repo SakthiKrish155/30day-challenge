@@ -1,0 +1,21 @@
+You are given a string 'str' of length 'N'.Your task is to reverse the original string word by word.
+There can be multiple spaces between two words and there can be leading or trailing spaces but in the output reversed string 
+you need to put a single space between two words, and your reversed string should not contain leading or trailing spaces.
+
+
+CODE:
+public class Solution 
+{
+	public static String reverseString(String str) 
+	{
+		String words[] = str.split("\\s+");
+		StringBuilder sb = new StringBuilder();
+		for(int i = words.length-1 ; i >= 0 ; i --)
+		{
+			sb.append(words[i]);
+			if(i > 0)
+				sb.append(" ");
+		}
+		return sb.toString();
+	}
+}
