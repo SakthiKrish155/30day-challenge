@@ -1,0 +1,28 @@
+You are given the string S . Compress the string when lower and upper cases are the same. In compressed string characters should be in lowercase.
+
+
+CODE:
+class Solution 
+{ 
+    String transform(String S) 
+    {
+        StringBuilder sb = new StringBuilder();
+        int count = 1;
+        String str = S.toLowerCase();
+        for(int i = 0 ; i < S.length()-1 ; i++)
+        {
+            char current = str.charAt(i);
+            char next = str.charAt(i+1);
+            if(current == next)
+                count ++;
+            else
+            {
+                sb.append(count).append(current);
+                count = 1;
+            }
+        }
+        sb.append(count).append(str.charAt(S.length()-1));
+        return sb.toString();
+        
+    }
+} 
