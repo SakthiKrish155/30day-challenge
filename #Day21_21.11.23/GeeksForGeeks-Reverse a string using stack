@@ -1,0 +1,23 @@
+You are given a string S, the task is to reverse the string using stack.
+
+
+CODE:
+class Solution {
+    
+    public String reverse(String S)
+    {
+        Deque <Character> stack = new LinkedList<>();
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0 ; i < S.length() ; i ++)
+        {
+            stack.push(S.charAt(i));
+        }
+        while(!stack.isEmpty())
+        {
+            sb.append(stack.peek());
+            stack.pop();
+        }
+        return sb.toString();
+    }
+
+}
