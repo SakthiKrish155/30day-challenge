@@ -1,0 +1,20 @@
+Given an integer N , print all the divisors of N in ascending order.
+
+
+CODE:
+import java.util.List;
+import java.util.ArrayList;
+public class Solution{
+    public static List< Integer > printDivisors(int n) 
+    {
+        ArrayList<Integer>temp = new ArrayList<>();
+        for(int i = 1 ; i <= n ; i ++)
+        {
+            if(n%i == 0)
+            {
+                temp.add(i);
+            }
+        }
+        return temp;
+    }
+}
