@@ -1,0 +1,35 @@
+Given a positive integer N, return the Nth row of pascal's triangle.
+Pascal's triangle is a triangular array of the binomial coefficients formed by summing up the elements of previous row.
+The elements can be large so return it modulo 10^9 + 7.
+
+
+CODE:
+class Solution {
+    ArrayList<Long> nthRowOfPascalTriangle(int n) 
+    {
+        ArrayList<Long> res = new ArrayList<>();
+        List<Long> row, pre = null;
+
+        for (int i = 0; i < n; ++i)
+        {
+            row = new ArrayList<Long>();
+
+            for (int j = 0; j <= i; ++j) 
+            {
+                if (j == 0 || j == i) 
+                {
+                    row.add(1L);
+                } 
+                else 
+                {
+                    row.add((pre.get(j - 1) + pre.get(j)) % 1000000007);
+                }
+            }
+
+            pre = row;
+        }
+
+        return new ArrayList<>(pre);
+
+    }
+}
