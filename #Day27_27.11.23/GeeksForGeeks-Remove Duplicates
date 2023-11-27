@@ -1,0 +1,22 @@
+Given a string without spaces, the task is to remove duplicates from it.
+
+
+CODE:
+class Solution {
+    String removeDups(String S) 
+    {
+       StringBuilder str = new StringBuilder();
+       HashSet<Character> res = new HashSet<>();
+       for(int i =  0; i < S.length(); i ++)
+       {
+           if(res.contains(S.charAt(i)))
+                continue;
+            else
+            {
+                str.append(S.charAt(i));
+                res.add(S.charAt(i));
+            }
+       }
+       return str.toString();
+    }
+}
