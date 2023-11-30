@@ -1,0 +1,27 @@
+Given a number and its reverse. Find that number raised to the power of its own reverse.
+Note: As answers can be very large, print the result modulo 10^9 + 7.
+
+
+CODE:
+class Solution
+{
+    long power(int N,int R)
+    {
+        long result = 1;
+        long base = N;
+        int modulo = 1000000007;
+
+        while (R > 0) {
+            if (R % 2 == 1) {
+                result = (result * base) % modulo;
+            }
+            base = (base * base) % modulo;
+            R /= 2;
+        }
+
+        return result;
+
+        
+    }
+
+}
